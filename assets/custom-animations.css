@@ -1,0 +1,574 @@
+/* ========================================
+   BLESS JOBS - CUSTOM ANIMATIONS
+   Premium animations and effects
+   ======================================== */
+
+/* ========================================
+   GLOBAL ANIMATION SETTINGS
+   ======================================== */
+:root {
+    --animation-speed-fast: 0.3s;
+    --animation-speed-normal: 0.6s;
+    --animation-speed-slow: 0.9s;
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Performance optimization */
+.animated {
+    will-change: transform, opacity;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-15deg) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   NAVBAR ANIMATIONS
+   ======================================== */
+.navbar {
+    animation: fadeInDown var(--animation-speed-normal) var(--ease-smooth) both;
+}
+
+.navbar-logo img {
+    transition: transform var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.navbar-logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-link {
+    position: relative;
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* ========================================
+   HERO SECTION ANIMATIONS
+   ======================================== */
+.header16 .mbr-section-title {
+    animation: fadeInUp var(--animation-speed-slow) var(--ease-smooth) 0.2s both;
+}
+
+.header16 .mbr-text {
+    animation: fadeInUp var(--animation-speed-slow) var(--ease-smooth) 0.4s both;
+}
+
+.header16 .mbr-section-btn {
+    animation: fadeInUp var(--animation-speed-slow) var(--ease-smooth) 0.6s both;
+}
+
+/* ========================================
+   BUTTON ANIMATIONS
+   ======================================== */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width var(--animation-speed-normal) var(--ease-smooth),
+        height var(--animation-speed-normal) var(--ease-smooth);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Shimmer effect for primary buttons */
+.btn-primary {
+    background-size: 200% auto;
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.btn-primary:hover {
+    background-position: right center;
+    animation: shimmer 2s linear infinite;
+}
+
+/* ========================================
+   CARD ANIMATIONS
+   ======================================== */
+.card,
+.item-wrapper,
+.slide-content {
+    transition: all var(--animation-speed-normal) var(--ease-smooth);
+}
+
+/* Hover lift effect */
+.features-image:hover .item-wrapper,
+.features-without-image:hover .item-wrapper,
+.embla__slide:hover .slide-content {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Image scale effect */
+.item-img {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.item-img img {
+    transition: transform var(--animation-speed-slow) var(--ease-smooth);
+}
+
+.item-wrapper:hover .item-img img,
+.slide-content:hover .item-img img {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   SCROLL ANIMATIONS (Intersection Observer)
+   ======================================== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity var(--animation-speed-slow) var(--ease-smooth),
+        transform var(--animation-speed-slow) var(--ease-smooth);
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation for multiple items */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--animation-speed-normal) var(--ease-smooth),
+        transform var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.stagger-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay classes for staggered animations */
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-5 {
+    transition-delay: 0.5s;
+}
+
+.delay-6 {
+    transition-delay: 0.6s;
+}
+
+.delay-7 {
+    transition-delay: 0.7s;
+}
+
+.delay-8 {
+    transition-delay: 0.8s;
+}
+
+/* ========================================
+   ICON ANIMATIONS
+   ======================================== */
+.iconfont-wrapper {
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.features-without-image:hover .iconfont-wrapper {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.mbr-iconfont {
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+/* ========================================
+   FEEDBACK CARDS
+   ======================================== */
+.people04 .item {
+    transition: all var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.people04 .item:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.people04 .img-wrapper img {
+    border-radius: 50%;
+    transition: all var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.people04 .item:hover .img-wrapper img {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   CAROUSEL ANIMATIONS
+   ======================================== */
+.embla__button {
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+.embla__button:hover {
+    transform: scale(1.2);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.embla__slide {
+    transition: opacity var(--animation-speed-normal) var(--ease-smooth);
+}
+
+/* ========================================
+   SECTION TITLE ANIMATIONS
+   ======================================== */
+.mbr-section-title {
+    position: relative;
+}
+
+.mbr-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 2px;
+    animation: slideInRight var(--animation-speed-slow) var(--ease-smooth);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+@keyframes skeleton {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.skeleton {
+    animation: skeleton 1.5s ease-in-out infinite;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+}
+
+/* ========================================
+   FOOTER ANIMATIONS
+   ======================================== */
+.footer4 {
+    animation: fadeIn var(--animation-speed-slow) var(--ease-smooth);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 768px) {
+
+    /* Reduce animation intensity on mobile */
+    .features-image:hover .item-wrapper,
+    .features-without-image:hover .item-wrapper {
+        transform: translateY(-5px);
+    }
+
+    .item-wrapper:hover .item-img img {
+        transform: scale(1.05);
+    }
+
+    .mbr-section-title::after {
+        width: 40px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    /* Respect user preference for reduced motion */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.fade-in {
+    animation: fadeIn var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.fade-in-up {
+    animation: fadeInUp var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.fade-in-down {
+    animation: fadeInDown var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.zoom-in {
+    animation: zoomIn var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.slide-in-left {
+    animation: slideInLeft var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.slide-in-right {
+    animation: slideInRight var(--animation-speed-normal) var(--ease-smooth);
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+input,
+select,
+textarea {
+    transition: all var(--animation-speed-fast) var(--ease-smooth);
+}
+
+/* Focus states for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #6366f1;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   GRADIENT BACKGROUNDS
+   ======================================== */
+.gradient-bg-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-bg-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* ========================================
+   GLASSMORPHISM EFFECTS
+   ======================================== */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   PARALLAX CONTAINER
+   ======================================== */
+.parallax-container {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.parallax-layer {
+    transition: transform var(--animation-speed-fast) ease-out;
+}
